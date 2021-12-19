@@ -1,0 +1,10 @@
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        mavenCentral()
+        jcenter() // Warning: this repository is going to shut down soon
+        google()
+    }
+}
+rootProject.name = "NotificationsReader"
+include ':app'
