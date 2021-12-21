@@ -5,7 +5,7 @@ import android.service.notification.StatusBarNotification;
 import android.util.Log;
 
 public class NotificationsService extends NotificationListenerService {
-    private static final String TAG = "NotificationsService";
+    private static final String TAG = "NotificationsReader";
     static NotificationsService _this;
 
     public static NotificationsService get() {
