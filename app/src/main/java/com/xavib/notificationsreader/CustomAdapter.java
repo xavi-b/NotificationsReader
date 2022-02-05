@@ -1,10 +1,15 @@
 package com.xavib.notificationsreader;
 
+import static android.content.Context.CLIPBOARD_SERVICE;
+
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class CustomAdapter extends BaseAdapter {
     MainActivity activity;
@@ -37,6 +42,16 @@ public class CustomAdapter extends BaseAdapter {
         app_name.setText(activity.data.get(i).app_name);
         TextView text = (TextView) view.findViewById(R.id.text);
         text.setText(activity.data.get(i).text);
+        text.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Toast.makeText(activity, "Text copied", Toast.LENGTH_SHORT);
+                ClipboardManager clipboard = (ClipboardManager) activity.getSystemService(CLIPBOARD_SERVICE);
+                ClipData clipData = ClipData.newPlainText("text", text.getText());
+                clipboard.setPrimaryClip(clipData);
+                return false;
+            }
+        });
         return view;
     }
 }
